@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="wt_std_f" model="hr.timesheet.work_type">
+            <field name="name">Standard &amp; Food ALW</field>
+            <field name="code">10_SF</field>
+        </record>
+
+        <record id="wt_std" model="hr.timesheet.work_type">
+            <field name="name">Standard</field>
+            <field name="code">11_S</field>
+        </record>
+
+        <record id="wt_night_f" model="hr.timesheet.work_type">
+            <field name="name">Night &amp; Food ALW</field>
+            <field name="code">20_NF</field>
+        </record>
+
+        <record id="wt_night" model="hr.timesheet.work_type">
+            <field name="name">Night</field>
+            <field name="code">21_N</field>
+        </record>
+
+        <record id="wt_w_holi_f" model="hr.timesheet.work_type">
+            <field name="name">Work on holiday &amp; Food ALW</field>
+            <field name="code">30_WF</field>
+        </record>
+
+        <record id="wt_w_holi" model="hr.timesheet.work_type">
+            <field name="name">Work on holiday</field>
+            <field name="code">31_W</field>
+        </record>
+
+    </data>
+
+</odoo>
