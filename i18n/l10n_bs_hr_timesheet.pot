@@ -22,6 +22,11 @@ msgid "Code"
 msgstr ""
 
 #. module: l10n_bs_hr_timesheet
+#: model:ir.model.fields,field_description:l10n_bs_hr_timesheet.field_hr_timesheet_work_type__food_included
+msgid "Food included?"
+msgstr ""
+
+#. module: l10n_bs_hr_timesheet
 #: model:hr.timesheet.work_type,name:l10n_bs_hr_timesheet.wt_night
 msgid "Night"
 msgstr ""

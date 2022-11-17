@@ -25,34 +25,39 @@ msgid "Code"
 msgstr "Šifra"
 
 #. module: l10n_bs_hr_timesheet
+#: model:ir.model.fields,field_description:l10n_bs_hr_timesheet.field_hr_timesheet_work_type__food_included
+msgid "Food included"
+msgstr "Topli obrok?"
+
+#. module: l10n_bs_hr_timesheet
 #: model:hr.timesheet.work_type,name:l10n_bs_hr_timesheet.wt_night
 msgid "Night"
-msgstr "Noćni rad"
+msgstr "Noćni rad bez TO"
 
 #. module: l10n_bs_hr_timesheet
 #: model:hr.timesheet.work_type,name:l10n_bs_hr_timesheet.wt_night_f
 msgid "Night & Food ALW"
-msgstr "Noćni rad sa TO"
+msgstr "Noćni rad"
 
 #. module: l10n_bs_hr_timesheet
 #: model:hr.timesheet.work_type,name:l10n_bs_hr_timesheet.wt_std
 msgid "Standard"
-msgstr "Redovni rad"
+msgstr "Redovni rad bez TO"
 
 #. module: l10n_bs_hr_timesheet
 #: model:hr.timesheet.work_type,name:l10n_bs_hr_timesheet.wt_std_f
 msgid "Standard & Food ALW"
-msgstr "Redovni rad sa TO"
+msgstr "Redovni rad"
 
 #. module: l10n_bs_hr_timesheet
 #: model:hr.timesheet.work_type,name:l10n_bs_hr_timesheet.wt_w_holi
 msgid "Work on holiday"
-msgstr "Rad na državni praznik"
+msgstr "Rad na državni praznik bez TO"
 
 #. module: l10n_bs_hr_timesheet
 #: model:hr.timesheet.work_type,name:l10n_bs_hr_timesheet.wt_w_holi_f
 msgid "Work on holiday & Food ALW"
-msgstr "Rad na državni praznik sa TO"
+msgstr "Rad na državni praznik"
 
 #. module: l10n_bs_hr_timesheet
 #: model:ir.model.fields,field_description:l10n_bs_hr_timesheet.field_account_analytic_line__work_type_id
