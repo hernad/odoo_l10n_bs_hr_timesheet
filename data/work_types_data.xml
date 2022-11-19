@@ -6,36 +6,42 @@
             <field name="name">Standard &amp; Food ALW</field>
             <field name="code">10_SF</field>
             <field name="food_included">True</field>
+            <field name="hours_fond_included">True</field>
         </record>
 
         <record id="wt_std" model="hr.timesheet.work_type">
             <field name="name">Standard</field>
             <field name="code">11_S</field>
             <field name="food_included">False</field>
+            <field name="hours_fond_included">True</field>
         </record>
 
         <record id="wt_night_f" model="hr.timesheet.work_type">
             <field name="name">Night &amp; Food ALW</field>
             <field name="code">20_NF</field>
             <field name="food_included">True</field>
+            <field name="hours_fond_included">True</field>
         </record>
 
         <record id="wt_night" model="hr.timesheet.work_type">
             <field name="name">Night</field>
             <field name="code">21_N</field>
             <field name="food_included">False</field>
+            <field name="hours_fond_included">True</field>
         </record>
 
         <record id="wt_w_holi_f" model="hr.timesheet.work_type">
             <field name="name">Work on holiday &amp; Food ALW</field>
             <field name="code">30_WF</field>
             <field name="food_included">True</field>
+            <field name="hours_fond_included">False</field>
         </record>
 
         <record id="wt_w_holi" model="hr.timesheet.work_type">
             <field name="name">Work on holiday</field>
             <field name="code">31_W</field>
             <field name="food_included">False</field>
+            <field name="hours_fond_included">False</field>
         </record>
 
 

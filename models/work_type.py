@@ -9,5 +9,6 @@ class TimesheetsWorkType(models.Model):
     name = fields.Char("Work Type", required=True, translate=True)
     code = fields.Char("Code", required=True)
     food_included = fields.Boolean("Food included?", required=True, default=True)
+    hours_fond_included = fields.Boolean("Included in hours fond", required=True, default=True)
 
 
