@@ -1,17 +1,32 @@
 <odoo>
     <data>
-
       <record id="hr_timesheet_line_tree" model="ir.ui.view">
           <field name="name" >hr.analytic.timesheet.tree</field>
           <field name="model">account.analytic.line</field>
           <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
           <field name="arch" type="xml">
               <field name="unit_amount" position="before">
-                  <field name="work_type_id" />
+                  <field name="work_type_id" required="1" />
               </field>
           </field>
       </record>
 
+      <record id="hr_timesheet_line_tree" model="ir.ui.view">
+          <field name="name" >hr.analytic.timesheet.tree</field>
+          <field name="model">project.task</field>
+          <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited" />
+          <field name="arch" type="xml">
+              <field name="unit_amount" position="before">
+                  <field name="work_type_id" required="1" />
+              </field>
+              <xpath expr="//field[@name='unit_amount']" position="replace">
+                 <field name="unit_amount" widget="timesheet_uom" 
+                    decoration-danger="unit_amount &gt; 16 or unit_amount &lt; 1"
+                    context="{'in_timesheet': True}"
+                 />
+              </xpath>
+          </field>
+      </record>
     </data>
   </odoo>
 
