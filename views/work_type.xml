@@ -11,7 +11,8 @@
           </field>
       </record>
 
-      <record id="hr_timesheet_line_tree" model="ir.ui.view">
+
+      <record id="hr_project_task_timesheet_tree" model="ir.ui.view">
           <field name="name" >hr.analytic.timesheet.tree</field>
           <field name="model">project.task</field>
           <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited" />
