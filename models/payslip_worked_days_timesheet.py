@@ -18,5 +18,5 @@ class HrPayslipAnalytic(models.Model):
        column1="worked_days_id",
        # related model records
        column2="analytic_line_id",
-       inverse_name="id"
+       inverse_name="worked_days_ids"
     )

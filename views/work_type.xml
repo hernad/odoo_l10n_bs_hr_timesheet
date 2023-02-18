@@ -6,6 +6,7 @@
           <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
           <field name="arch" type="xml">
               <field name="unit_amount" position="before">
+                  <field name="in_payroll" />
                   <field name="work_type_id" required="1" options="{'no_create_edit': True}" />
               </field>
           </field>
@@ -92,6 +93,7 @@
           <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited" />
           <field name="arch" type="xml">
               <field name="unit_amount" position="before">
+                  <field name="in_payroll" />
                   <field name="work_type_id" required="1" options="{'no_create': True, 'no_create_edit': True}" />
               </field>
               <xpath expr="//field[@name='unit_amount']" position="replace">
