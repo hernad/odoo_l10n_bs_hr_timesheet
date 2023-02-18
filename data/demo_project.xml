@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="project_stage_novi" model="project.task.type">
+            <field name="sequence">100</field>
+            <field name="name">Novi</field>
+            <!--
+            <field name="legend_blocked">Blocked</field>
+            <field name="mail_template_id" ref="project.mail_template_data_project_task"/>
+            -->
+        </record>
+
+        <record id="project_stage_utoku" model="project.task.type">
+            <field name="sequence">110</field>
+            <field name="name">U toku</field>
+            <!--
+            <field name="legend_blocked">Need functional or technical help</field>
+            <field name="legend_done">Buzz or set as done</field>
+            -->
+        </record>
+
+        <record id="project_stage_zav" model="project.task.type">
+            <field name="sequence">120</field>
+            <field name="name">Završeno</field>
+            <field name="fold" eval="True"/>
+        </record>
+
+        <record id="project_stage_otk" model="project.task.type">
+            <field name="sequence">130</field>
+            <field name="name">Otkazano</field>
+            <!--
+            <field name="legend_done">Ready to reopen</field>
+            -->
+            <field name="fold" eval="True"/>
+        </record>
+
+        <record id="project_project_1" model="project.project">
+            <field name="date_start" eval="DateTime.today() - relativedelta(weeks=9)"/>
+            <field name="date" eval="DateTime.today() + relativedelta(weekday=4,weeks=1)"/>
+            <field name="name">Remont Cementara Kakanj</field>
+            <field name="color">3</field>
+            <!--
+            <field name="user_id" ref="base.user_demo"/>
+            -->
+            <field name="type_ids" eval="[Command.link(ref('project_stage_novi')),
+                        Command.link(ref('project_stage_utoku')), Command.link(ref('project_stage_zav')),
+                        Command.link(ref('project_stage_otk'))]"/>
+
+            <!--
+            <field name="partner_id" ref="base.partner_demo_portal"/>
+            <field name="privacy_visibility">portal</field>
+            -->
+            <!--
+            <field name="favorite_user_ids" eval="[Command.link(ref('base.user_admin'))]"/>
+            <field name="tag_ids" eval="[Command.link(ref('project.project_tags_05'))]"/>
+            -->
+            <!--
+            <field name="stage_id" ref="l10n_bs_hr_timesheet.project_stage_novi"/>
+            <field name="analytic_account_id" ref="project.analytic_office_design"/>
+            -->
+        </record>
+
+        <record id="project_project_2" model="project.project">
+            <field name="date_start" eval="DateTime.today() - relativedelta(weeks=9)"/>
+            <field name="date" eval="DateTime.today() + relativedelta(weekday=4,weeks=8)"/>
+            <field name="name">Termoelektrana Tuzla blok 77</field>
+            <field name="color">4</field>
+            <!--
+            <field name="user_id" ref="base.user_demo"/>
+            -->
+            <field name="type_ids" eval="[Command.link(ref('project_stage_novi')),
+                        Command.link(ref('project_stage_utoku')), Command.link(ref('project_stage_zav')),
+                        Command.link(ref('project_stage_otk'))]"/>
+            <!--
+            <field name="favorite_user_ids" eval="[Command.link(ref('base.user_admin'))]"/>
+            -->
+            <!--
+            <field name="stage_id" ref="l10n_bs_hr_timesheet.project_stage_novi"/>
+            -->
+        </record>
+
+        <!-- Project 1 Tasks -->
+        <record id="project_1_task_1" model="project.task">
+            <field name="sequence">20</field>
+            <!--
+            <field name="planned_hours">20.0</field>
+            -->
+            <field name="user_ids" eval="False"/>
+            <field name="project_id" ref="l10n_bs_hr_timesheet.project_project_1"/>
+            <field name="name">RN 1552</field>
+            <field name="stage_id" ref="project_stage_utoku"/>
+            <field name="color">7</field>
+            <field name="create_date" eval="DateTime.now() - relativedelta(months=5)"/>
+            <!--
+            <field name="milestone_id" ref="project.project_1_milestone_1" />
+            -->
+        </record>
+
+        <record id="project_1_task_2" model="project.task">
+            <field name="sequence">30</field>
+            <!--
+            <field name="planned_hours">20.0</field>
+            -->
+            <field name="user_ids" eval="False"/>
+            <field name="project_id" ref="l10n_bs_hr_timesheet.project_project_1"/>
+            <field name="name">RN 2001</field>
+            <field name="stage_id" ref="project_stage_utoku"/>
+            <field name="color">6</field>
+            <field name="create_date" eval="DateTime.now() - relativedelta(months=5)"/>
+            <!--
+            <field name="milestone_id" ref="project.project_1_milestone_1" />
+            -->
+        </record>
+
+        <record id="project_2_task_1" model="project.task">
+            <!--
+            <field name="planned_hours" eval="32.0"/>
+            <field name="user_ids" eval="[Command.link(ref('base.user_demo'))]"/>
+            <field name="priority">0</field>
+             -->
+            <field name="project_id" ref="l10n_bs_hr_timesheet.project_project_2"/>
+            <field name="name">RN 4500</field>
+            <field name="stage_id" ref="project_stage_novi"/>
+            <field name="create_date" eval="DateTime.now() - relativedelta(months=5)"/>
+            <!--
+            <field name="milestone_id" ref="project.project_1_milestone_1" />
+            -->
+        </record>
+        
+    </data>
+
+</odoo>

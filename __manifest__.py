@@ -25,6 +25,7 @@ Bosnian timesheet work types
         'data/work_types_data.xml',
         'security/ir.model.access.csv',
         'views/work_type.xml',
+        #'data/demo_project.xml',
     ],
     "active": False,
     'license': 'GPL-3',
