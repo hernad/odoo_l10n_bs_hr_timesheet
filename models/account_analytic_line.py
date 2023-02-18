@@ -38,6 +38,18 @@ class AccountAnalyticLine(models.Model):
     #    return super(AccountAnalyticLine, self).write(vals)
 
 
+    # analytic_line unit_amount = 8, hours_to_spend = 3
+    # => we need two analytic lines: 3 + 5
+    def split_as_needed(self, hours_to_spend):
+        amount_to_split = self.unit_amount
+        name_to_split = self.name.strip()
+        if hours_to_spend > 0 and hours_to_spend < amount_to_split:
+            self.write({'unit_amount': hours_to_spend,
+                        'name': name_to_split + ' split-1'})
+            self.copy({'unit_amount': amount_to_split - hours_to_spend,
+                       'name': name_to_split + 'split-2'})
+
+
 class ProjectTask(models.Model):
     _inherit = "project.task"
     @api.constrains('timesheet_ids')

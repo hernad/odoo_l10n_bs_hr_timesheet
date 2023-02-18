@@ -20,7 +20,7 @@ Bosnian timesheet work types
     "author": "bring.out",
     'category': 'Timesheet',
     "website": "https://github.com/hernad/odoo",
-    'depends': ['base', 'hr_timesheet', 'hr_timesheet_work_type'],
+    'depends': ['base', 'hr_timesheet'],
     'data': [
         'data/work_types_data.xml',
         'security/ir.model.access.csv',
