@@ -60,6 +60,16 @@ msgid "Work on holiday & Food ALW"
 msgstr "Rad na državni praznik"
 
 #. module: l10n_bs_hr_timesheet
+#: model:hr.timesheet.work_type,name:l10n_bs_hr_timesheet.wt_w_holi_n_f
+msgid "Night Work on holiday & Food ALW"
+msgstr "Noćni rad na državni praznik"
+
+#. module: l10n_bs_hr_timesheet
+#: model:hr.timesheet.work_type,name:l10n_bs_hr_timesheet.wt_w_holi_n
+msgid "Night Work on holiday"
+msgstr "Noćni rad na državni praznik bez TO"
+
+#. module: l10n_bs_hr_timesheet
 #: model:ir.model.fields,field_description:l10n_bs_hr_timesheet.field_account_analytic_line__work_type_id
 #: model:ir.model.fields,field_description:l10n_bs_hr_timesheet.field_hr_timesheet_work_type__name
 msgid "Work Type"

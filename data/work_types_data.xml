@@ -44,6 +44,19 @@
             <field name="hours_fond_included">False</field>
         </record>
 
+        <record id="wt_w_holi_n_f" model="hr.timesheet.work_type">
+            <field name="name">Night Work on holiday &amp; Food ALW</field>
+            <field name="code">40_XF</field>
+            <field name="food_included">True</field>
+            <field name="hours_fond_included">False</field>
+        </record>
+
+        <record id="wt_w_holi_n" model="hr.timesheet.work_type">
+            <field name="name">Night Work on holiday</field>
+            <field name="code">41_X</field>
+            <field name="food_included">False</field>
+            <field name="hours_fond_included">False</field>
+        </record>
     </data>
 
 </odoo>
