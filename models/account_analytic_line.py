@@ -115,7 +115,7 @@ class ProjectTask(models.Model):
     @api.constrains('timesheet_ids')
     def _check_timesheet_unit_amount(self):
         for timesheet in self.timesheet_ids:
-            if timesheet.unit_amount < 1:
+            if timesheet.unit_amount < 0.01:
                 raise ValidationError(_('Broj sati mora biti > 0'))
             if timesheet.unit_amount > 16:
                 raise ValidationError(_('Broj sati mora biti <= 16'))
