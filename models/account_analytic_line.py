@@ -4,7 +4,7 @@ from odoo.exceptions import UserError, ValidationError
 class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
-    in_payroll = fields.Char(string="Plata", compute="_calc_in_payroll")
+    in_payroll = fields.Date(string="Plata", compute="_calc_in_payroll")
     work_type_id = fields.Many2one(string="Work Type",
                                    comodel_name="hr.timesheet.work_type",
                                    help="Odaberi vrstu rada",
@@ -36,19 +36,19 @@ class AccountAnalyticLine(models.Model):
     def _calc_in_payroll(self):
         for rec in self:
             if rec.worked_days_ids:
-                rec.in_payroll = 'X'
+                rec.in_payroll = rec.worked_days_ids[0].payslip_id.date_to
             else:
-                rec.in_payroll = ' '
+                rec.in_payroll = False
 
     def unlink(self):
         for rec in self:
-            if rec.in_payroll == 'X':
+            if rec.in_payroll:
                 raise(ValidationError("Šihtarica iskorištena u obračunu se ne može brisati!"))
         return super(AccountAnalyticLine, self).unlink()
 
 
     def write(self, vals):
-        if any(in_payroll == 'X' for in_payroll in set(self.mapped('in_payroll'))):
+        if any(in_payroll for in_payroll in set(self.mapped('in_payroll'))):
             raise UserError(_("Šihtarica iskorištena u obračunu - ne čačkaj mečku!"))
         else:
             return super(AccountAnalyticLine, self).write(vals)
