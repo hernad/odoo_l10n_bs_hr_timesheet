@@ -4,6 +4,12 @@ from odoo.exceptions import UserError, ValidationError
 class HrPayslipTimesheet(models.Model):
     _inherit = "hr.payslip"
 
+    timesheet_hours = fields.Float(
+        string="Šihtarice",
+        compute="_compute_timesheet_hours",
+        store=False
+    )
+
     timesheet_ids = fields.One2many(
         "account.analytic.line",
         compute="_compute_timesheet_ids",
@@ -33,6 +39,23 @@ class HrPayslipTimesheet(models.Model):
     )
 
     @api.depends("worked_days_line_ids")
+    def _compute_timesheet_hours(self):
+        analytic_line_object = self.env['account.analytic.line']
+        for payslip in self:
+            lines = analytic_line_object.search([
+                ('employee_id', '=', payslip.employee_id.id),
+                ('date', '<=', payslip.date_to),
+                ('date', '>=', payslip.date_from),
+                ('work_type_id', '!=', False),
+                ('global_leave_id', '=', False),
+                ('holiday_id', '=', False),
+            ], order="date desc")
+            hours_total = 0
+            for line in lines:
+                hours_total += line.unit_amount
+            payslip.timesheet_hours = hours_total
+
+    @api.depends("worked_days_line_ids")
     def _compute_timesheet_ids(self):
         analytic_line_object = self.env['account.analytic.line']
         for payslip in self:
@@ -48,6 +71,7 @@ class HrPayslipTimesheet(models.Model):
                         #     ('worked_days_ids', 'in', [line.id for line in self.worked_days_line_ids])
                     ], order="date desc")
             payslip.timesheet_ids = lines
+
 
     @api.depends("worked_days_line_ids")
     def _compute_timesheet_unspent_ids(self):
