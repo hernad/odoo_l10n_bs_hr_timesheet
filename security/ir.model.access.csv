@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_timesheet_work_type,work.type,model_hr_timesheet_work_type,base.group_user,1,0,0,0
 access_timesheet_work_type_manager,work.type,model_hr_timesheet_work_type,project.group_project_manager,1,1,1,1
+access_hr_payslip_worked_days_user,hr.payslip.worked_days,model_hr_payslip_worked_days,base.group_user,1,0,0,0
+access_hr_payslip_user,hr.payslip,model_hr_payslip,base.group_user,1,0,0,0
