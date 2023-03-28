@@ -6,7 +6,7 @@ class HrPayslipTimesheet(models.Model):
 
     timesheet_hours = fields.Float(
         string="Šihtarice",
-        compute="_compute_timesheet_hours",
+        compute="_compute_field_timesheet_hours",
         store=False
     )
 
@@ -39,7 +39,7 @@ class HrPayslipTimesheet(models.Model):
     )
 
     @api.depends("worked_days_line_ids")
-    def _compute_timesheet_hours(self):
+    def _compute_field_timesheet_hours(self):
         analytic_line_object = self.env['account.analytic.line']
         for payslip in self:
             lines = analytic_line_object.search([
