@@ -80,7 +80,7 @@ class HrPayslipTimesheet(models.Model):
                # payslip_date = 28.02.2023
                # timesheet_spent = 01.05.2023 
                # šitarica potrošena u budućnosti
-               return true
+               return True
 
         analytic_line_object = self.env['account.analytic.line']
         for payslip in self:
