@@ -16,7 +16,7 @@ Description:
 Bosnian timesheet work types
 
 """,
-    "version": "16.0.0",
+    "version": "16.0.5",
     "author": "bring.out",
     'category': 'Timesheet',
     "website": "https://github.com/hernad/odoo",
@@ -25,7 +25,7 @@ Bosnian timesheet work types
         'data/work_types_data.xml',
         'security/ir.model.access.csv',
         'views/work_type.xml',
-        #'data/demo_project.xml',
+        'views/user_timesheet_options.xml'
     ],
     "active": False,
     'license': 'GPL-3',

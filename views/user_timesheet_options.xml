@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_user_timesheet_options" model="ir.ui.view">
+        <field name="name">user.timesheet.options.form</field>
+        <field name="model">user.timesheet.options.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Parametri unosa">
+                <header>
+                 <span><h2>Tekući parametri unosa</h2></span>
+                </header>
+                <group id="parametri">
+                <field name="data_entry_project_id" options="{'no_create_edit': True, 'no_open': 1}" required="1" />
+                <field name="data_entry_task_id" optional="show" options="{'no_create_edit': True, 'no_open': True}" widget="task_with_hours" context="{'default_project_id': data_entry_project_id}"/>
+                <field name="data_entry_date" string="Datum:" widget="date" />
+                <field name="data_entry_employee_id" string="Zaposlenik:" />
+                <field name="data_entry_work_type_id" string="Način rada:" />
+                <field name="data_entry_unit_amount" string="Broj sati:" />
+                </group>
+         
+                <footer>
+                    <button
+                        name="set_default_user_timesheet_options"
+                        type="object"
+                        string="OK"
+                        class="btn-primary"
+                    />
+                    <button special="cancel" string="Otkaži" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>   

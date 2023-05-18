@@ -3,3 +3,5 @@ access_timesheet_work_type,work.type,model_hr_timesheet_work_type,base.group_use
 access_timesheet_work_type_manager,work.type,model_hr_timesheet_work_type,project.group_project_manager,1,1,1,1
 access_hr_payslip_worked_days_user,hr.payslip.worked_days,model_hr_payslip_worked_days,base.group_user,1,0,0,0
 access_hr_payslip_user,hr.payslip,model_hr_payslip,base.group_user,1,0,0,0
+access_user_timesheet_options_wizard_user,user.timesheet.options.wizard,model_user_timesheet_options_wizard,base.group_user,1,1,1,1
+access_user_options_user,res.users.options,model_res_users_options,base.group_user,1,1,1,1
