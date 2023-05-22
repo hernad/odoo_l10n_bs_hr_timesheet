@@ -42,7 +42,7 @@
       <record id="hr_timesheet_line_tree_user" model="ir.ui.view">
           <field name="name">hr.analytic.timesheet.tree.user.bs</field>
           <field name="model">account.analytic.line</field>
-          <field name="inherit_id" ref="hr_timesheet.timesheet_view_tree_user" />
+          <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
           <field name="arch" type="xml">
 
               <field name="date" position="before">
@@ -76,9 +76,6 @@
                     <attribute name="context">{'active_test': True}</attribute>
               </xpath>
 
-
-            
-           
 
           </field>
       </record>
