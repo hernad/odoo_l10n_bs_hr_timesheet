@@ -9,7 +9,7 @@
                  <span><h2>Tekući parametri unosa</h2></span>
                 </header>
                 <group id="parametri">
-                <field name="data_entry_project_id" options="{'no_create_edit': True, 'no_open': 1}" required="1" />
+                <field name="data_entry_project_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': 1}" required="1" />
                 <field name="data_entry_task_id" optional="show" options="{'no_create_edit': True, 'no_open': True}" widget="task_with_hours" context="{'default_project_id': data_entry_project_id}"/>
                 <field name="data_entry_date" string="Datum:" widget="date" />
                 <field name="data_entry_employee_id" string="Zaposlenik:" options="{'no_create': True, 'no_create_edit': True}" />
