@@ -92,9 +92,9 @@ class AccountAnalyticLine(models.Model):
 
     def _default_project_id(self):
        try:
-           self.default_project_id = self.default_get([])['project_id'].id
-        except:
-           self.default_project_id = False
+         self.default_project_id = self.default_get([])['project_id'].id
+       except:
+         self.default_project_id = False
        return
 
     def _default_task_id(self):
@@ -113,24 +113,24 @@ class AccountAnalyticLine(models.Model):
 
     def _default_employee_id(self):
         try:
-           self.default_employee_id = self.default_get([])['employee_id']
+          self.default_employee_id = self.default_get([])['employee_id']
         except:
-           self.default_employee_id = False
+          self.default_employee_id = False
         return
 
 
     def _default_work_type_id(self):
         try:
-           self.default_work_type_id = self.default_get([])['work_type_id']
+          self.default_work_type_id = self.default_get([])['work_type_id']
         except:
-           self.default_work_type_id = False
+          self.default_work_type_id = False
         return
 
 
     def _default_unit_amount(self):
-        if 'unit_amount' in self.default_get([]):
+        try:
            self.default_unit_amount = self.default_get([])['unit_amount']
-        else:
+        except:
            self.default_unit_amount = False
         return
 
