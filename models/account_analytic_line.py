@@ -91,21 +91,21 @@ class AccountAnalyticLine(models.Model):
             return super(AccountAnalyticLine, self).write(vals)
 
     def _default_project_id(self):
-       if 'project_id' in self.default_get([]):
+       if 'project_id' in self.default_get([]) and 'id' in self.default_get([])['project_id']:
           self.default_project_id = self.default_get([])['project_id'].id
        else:
           self.default_project_id = False
        return
 
     def _default_task_id(self):
-       if 'task_id' in self.default_get([]):
+       if 'task_id' in self.default_get([]) and 'id' in self.default_get([])['task_id']:
           self.default_task_id = self.default_get([])['task_id'].id
        else:
           self.default_task_id = False
        return
 
     def _default_date(self):
-       if 'date' in self.default_get([]): 
+       if 'date' in self.default_get([]):
           self.default_date = self.default_get([])['date']
        else:
           self.default_date = False
