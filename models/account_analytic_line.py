@@ -159,28 +159,36 @@ class AccountAnalyticLine(models.Model):
         amount_to_split = self.unit_amount
         name_to_split = self.name.strip()
         work_type_id_1 = self.work_type_id
-        work_type_id_2 = work_type_id_1
+        work_type_old = work_type_id_1
 
+        if work_type_id_1.code == '70_T':
+            # stavka tipa '70_T' je vec podjeljena
+            return True
+
+        if work_type_old.food_included:
+            env_db_work_type = self.env['hr.timesheet.work_type']
+            # 10_SF => 11_S, 20_NF => 21_N, 30_WF => 31_W
+            if work_type_old.code == "10_SF":
+                work_type_no_food = env_db_work_type.search([("code", '=', '11_S')])
+            elif work_type_old.code == "20_NF":
+                work_type_no_food = env_db_work_type.search([("code", '=', '21_N')])
+            elif work_type_old.code == "30_WF":
+                work_type_no_food = env_db_work_type.search([("code", '=', '31_W')])
+            else:
+                raise(ValidationError('Način rada: ' + work_type_old.code + ' mora imati varijantu bez TO'))
+        else:
+            work_type_no_food = work_type_old
+
+        # ostalo sati za potrositi ali je stavka prevelika pa treba napraviti split
         if hours_to_spend > 0 and hours_to_spend < amount_to_split:
-            work_type_old = work_type_id_1
-            if work_type_old.food_included:
-                env_db_work_type = self.env['hr.timesheet.work_type']
-                if work_type_old.code == "10_SF":
-                    work_type_new = env_db_work_type.search([("code", '=', '11_S')])
-                elif work_type_old.code == "20_NF":
-                    work_type_new = env_db_work_type.search([("code", '=', '21_N')])
-                elif work_type_old.code == "30_WF":
-                    work_type_new = env_db_work_type.search([("code", '=', '31_W')])
-                else:
-                    raise(ValidationError('Način rada: ' + work_type_old.code + ' mora imati varijantu bez TO'))
 
-                if food_days_rest <= 0:
-                    # we have reached food days limit
-                    work_type_id_1 = work_type_new
-                    work_type_id_2 = work_type_old
-                else:
-                    work_type_id_1 = work_type_old
-                    work_type_id_2 = work_type_new
+            if food_days_rest <= 0:
+                # we have reached food days limit
+                work_type_id_1 = work_type_no_food  # potrošen mjesečni fond za TO: dijeli na stavku bez TO + stavka sa TO za preraspodjelu
+                work_type_id_2 = work_type_old
+            else:
+                work_type_id_1 = work_type_old # nije potrošen mjesečni fond za TO: dijeli na stavku sa TO + stavka bez TO za preraspodjelu
+                work_type_id_2 = work_type_no_food
 
             self.write({
                     'unit_amount': hours_to_spend,
@@ -193,7 +201,52 @@ class AccountAnalyticLine(models.Model):
                 'work_type_id': work_type_id_2.id
             })
 
-        return
+            return True
+
+        # sati nisu potroseni, stavka nije prevelika (broja sati se ne treba dijeliti), ali
+        # smo potrosili fond sati za TO a stavka je sa TO ukljucenim
+        elif hours_to_spend > 0 and hours_to_spend >= amount_to_split and food_days_rest == 0 and work_type_old.food_included:
+
+            env_db_work_type = self.env['hr.timesheet.work_type']
+            work_type_only_food = env_db_work_type.search([("code", '=', '70_T')])
+
+            self.write({
+                'unit_amount': amount_to_split,
+                'name': 'splitTO-1: ' + name_to_split,
+                'work_type_id': work_type_no_food.id
+            })
+            self.copy({
+                'unit_amount': 0,
+                'name': 'splitTO-2: ' + name_to_split,
+                'work_type_id': work_type_only_food.id
+            })
+
+            return True
+
+        # sati su potroseni ali dani za TO nisu i ova stavka je stavka sa TO
+        elif hours_to_spend <= 0 and food_days_rest > 0 and work_type_old.food_included:
+
+            # ostalo je dana TO = 3 dana, mjesecni fond sati = 0h, stavka Redovni rad sa TO (10_SF) = 5h
+            # dijelimo je na stavke:
+            # a) 70_T = 1
+            # b) Redovni rad bez TO (11_S) = 5h za preraspodjelu 
+            env_db_work_type = self.env['hr.timesheet.work_type']
+            work_type_only_food = env_db_work_type.search([("code", '=', '70_T')])
+
+            self.write({
+                    'unit_amount': 0,
+                    'name': 'splitTO1: ' + name_to_split,
+                    'work_type_id': work_type_only_food.id
+            })
+            self.copy({
+                'unit_amount': amount_to_split,
+                'name': 'splitTO2: ' + name_to_split,
+                'work_type_id': work_type_no_food.id
+            })
+
+            return True
+
+        return False
 
 
     # @api.constrains('unit_amount')

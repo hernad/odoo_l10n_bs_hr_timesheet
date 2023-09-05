@@ -57,7 +57,7 @@
             <field name="food_included">False</field>
             <field name="hours_fond_included">False</field>
         </record>
-
+<!--
         <record id="wt_rel_f" model="hr.timesheet.work_type">
             <field name="name">Rad na vjerski praznik</field>
             <field name="code">50_VF</field>
@@ -71,7 +71,7 @@
             <field name="food_included">False</field>
             <field name="hours_fond_included">False</field>
         </record>
-
+-->
         <record id="wt_w_godm" model="hr.timesheet.work_type">
             <field name="name">Godišnji odmor neiskorišten</field>
             <field name="code">60_G</field>
@@ -79,6 +79,12 @@
             <field name="hours_fond_included">False</field>
         </record>
 
+        <record id="wt_w_toonly" model="hr.timesheet.work_type">
+            <field name="name">Topli obrok bez radnih sati</field>
+            <field name="code">70_T</field>
+            <field name="food_included">True</field>
+            <field name="hours_fond_included">False</field>
+        </record>
 
     </data>
 
