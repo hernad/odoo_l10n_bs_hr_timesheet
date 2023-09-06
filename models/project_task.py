@@ -22,7 +22,9 @@ class ProjectTaskTimeSheetBs(models.Model):
     def _check_timesheet_unit_amount(self):
         for timesheet in self.timesheet_ids:
             if timesheet.unit_amount < 0.01:
-                raise ValidationError(_('Broj sati mora biti > 0'))
+                # stavke sa splitTO u nazivu su tipa 70_T (Topli obrok only)
+                if  not 'splitTO' in timesheet.name:
+                   raise ValidationError(_('Broj sati mora biti > 0'))
             if timesheet.unit_amount > 16:
                 raise ValidationError(_('Broj sati mora biti <= 16'))
 
