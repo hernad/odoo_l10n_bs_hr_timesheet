@@ -167,13 +167,16 @@ class AccountAnalyticLine(models.Model):
 
         if work_type_old.food_included:
             env_db_work_type = self.env['hr.timesheet.work_type']
-            # 10_SF => 11_S, 20_NF => 21_N, 30_WF => 31_W
+            # 10_SF => 11_S, 20_NF => 21_N, 30_WF => 31_W, 40_XF => 41_X
             if work_type_old.code == "10_SF":
                 work_type_no_food = env_db_work_type.search([("code", '=', '11_S')])
             elif work_type_old.code == "20_NF":
                 work_type_no_food = env_db_work_type.search([("code", '=', '21_N')])
             elif work_type_old.code == "30_WF":
                 work_type_no_food = env_db_work_type.search([("code", '=', '31_W')])
+            elif work_type_old.code == "40_XF":
+                work_type_no_food = env_db_work_type.search([("code", '=', '41_X')])
+            
             else:
                 raise(ValidationError('Način rada: ' + work_type_old.code + ' mora imati varijantu bez TO'))
         else:
