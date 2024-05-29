@@ -109,7 +109,7 @@
 
         <record id="wt_sodm_n" model="hr.timesheet.work_type">
             <field name="name">Noćni rad na dane sedmičnog odmora bez TO</field>
-            <field name="code">81_SN</field>
+            <field name="code">91_SN</field>
             <field name="food_included">False</field>
             <field name="hours_fond_included">True</field>
         </record>
