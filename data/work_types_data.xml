@@ -100,6 +100,47 @@
             <field name="hours_fond_included">True</field>
         </record>
         
+        <record id="wt_sodm_nf" model="hr.timesheet.work_type">
+            <field name="name">Noćni rad na dane sedmičnog odmora</field>
+            <field name="code">90_SNF</field>
+            <field name="food_included">True</field>
+            <field name="hours_fond_included">True</field>
+        </record>
+
+        <record id="wt_sodm_n" model="hr.timesheet.work_type">
+            <field name="name">Noćni rad na dane sedmičnog odmora bez TO</field>
+            <field name="code">81_SN</field>
+            <field name="food_included">False</field>
+            <field name="hours_fond_included">True</field>
+        </record>
+        
+        <record id="wt_sodm_df" model="hr.timesheet.work_type">
+            <field name="name">Rad na praznik na dane sedmičnog odmora</field>
+            <field name="code">A0_SDF</field>
+            <field name="food_included">True</field>
+            <field name="hours_fond_included">False</field>
+        </record>
+
+        <record id="wt_sodm_d" model="hr.timesheet.work_type">
+            <field name="name">Rad na praznik na dane sedmičnog odmora bez TO</field>
+            <field name="code">A1_SD</field>
+            <field name="food_included">False</field>
+            <field name="hours_fond_included">False</field>
+        </record>
+
+        <record id="wt_sodm_df" model="hr.timesheet.work_type">
+            <field name="name">Noćni rad na praznik na dane sedmičnog odmora</field>
+            <field name="code">B0_SNDF</field>
+            <field name="food_included">True</field>
+            <field name="hours_fond_included">False</field>
+        </record>
+
+        <record id="wt_sodm" model="hr.timesheet.work_type">
+            <field name="name">Noćni rad na praznik na dane sedmičnog odmora bez TO</field>
+            <field name="code">B1_SND</field>
+            <field name="food_included">False</field>
+            <field name="hours_fond_included">False</field>
+        </record>    
     </data>
 
 </odoo>
