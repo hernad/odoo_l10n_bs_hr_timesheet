@@ -128,14 +128,14 @@
             <field name="hours_fond_included">False</field>
         </record>
 
-        <record id="wt_sodm_df" model="hr.timesheet.work_type">
+        <record id="wt_sodm_dnf" model="hr.timesheet.work_type">
             <field name="name">Noćni rad na praznik na dane sedmičnog odmora</field>
             <field name="code">B0_SNDF</field>
             <field name="food_included">True</field>
             <field name="hours_fond_included">False</field>
         </record>
 
-        <record id="wt_sodm" model="hr.timesheet.work_type">
+        <record id="wt_sodm_dn" model="hr.timesheet.work_type">
             <field name="name">Noćni rad na praznik na dane sedmičnog odmora bez TO</field>
             <field name="code">B1_SND</field>
             <field name="food_included">False</field>
