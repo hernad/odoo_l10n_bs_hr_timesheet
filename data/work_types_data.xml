@@ -99,6 +99,7 @@
             <field name="food_included">False</field>
             <field name="hours_fond_included">True</field>
         </record>
+        
     </data>
 
 </odoo>
