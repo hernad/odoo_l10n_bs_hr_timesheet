@@ -86,6 +86,19 @@
             <field name="hours_fond_included">False</field>
         </record>
 
+        <record id="wt_sodm_f" model="hr.timesheet.work_type">
+            <field name="name">Rad na dane sedmičnog odmora</field>
+            <field name="code">80_SF</field>
+            <field name="food_included">True</field>
+            <field name="hours_fond_included">True</field>
+        </record>
+
+        <record id="wt_sodm" model="hr.timesheet.work_type">
+            <field name="name">Rad na dane sedmičnog odmora bez TO</field>
+            <field name="code">81_S</field>
+            <field name="food_included">False</field>
+            <field name="hours_fond_included">True</field>
+        </record>
     </data>
 
 </odoo>
