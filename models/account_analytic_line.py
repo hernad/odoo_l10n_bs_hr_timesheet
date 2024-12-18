@@ -176,7 +176,14 @@ class AccountAnalyticLine(models.Model):
                 work_type_no_food = env_db_work_type.search([("code", '=', '31_W')])
             elif work_type_old.code == "40_XF":
                 work_type_no_food = env_db_work_type.search([("code", '=', '41_X')])
-            
+            elif work_type_old.code == "80_SF":
+                work_type_no_food = env_db_work_type.search([("code", '=', '81_S')])
+            elif work_type_old.code == "90_SNF":
+                work_type_no_food = env_db_work_type.search([("code", '=', '91_SN')])
+            elif work_type_old.code == "A0_SDF":
+                work_type_no_food = env_db_work_type.search([("code", '=', 'A1_SD')])
+            elif work_type_old.code == "B0_SNDF":
+                work_type_no_food = env_db_work_type.search([("code", '=', 'B1_SND')])
             else:
                 raise(ValidationError('Način rada: ' + work_type_old.code + ' mora imati varijantu bez TO'))
         else:
